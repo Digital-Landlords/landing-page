@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Landlords</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Digital+Numbers:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Digital7&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+    body {
+      font-family: 'Rubik', sans-serif;
+      background: linear-gradient(135deg, #2E208E, #13213C);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow-y: hidden;
+    }
+
+    .website-count-down {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 50px;
+      width: 100%;
+      max-width: 800px;
+      box-sizing: border-box;
+      position: relative;
+      border-radius: 10px;
+    }
+
+    .launching-soon {
+      font-size: 28px;
+      color: #FFFFFF;
+      margin-bottom: 20px;
+      z-index: 999;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 32px;
+      gap: 20px;
+    }
+
+    .countdown .time-pair {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .countdown .digit {
+      display: flex;
+      gap: 10px; /* Adjust gap between the two digits */
+    }
+    .logo {
+      position: absolute;
+      top: -107px;
+      left: -273px;
+      display: flex;
+      align-items: center;
+      color: #FFFFFF;
+      font-size: 18px;
+    }
+
+    .logo img {
+      height: 190px;
+      margin-right: 10px;
+      z-index: 9999;
+    }
+    .countdown .time-block {
+      position: relative;
+      text-align: center;
+    }
+
+    .countdown .time-block span {
+      display: block;
+      font-size: 72px;
+      color: #FFFFFF;
+      font-family: 'Digital7', sans-serif;
+    }
+
+    .countdown .time-block .rectangle {
+      position: relative;
+      top: 86px;
+      left: 50%;
+      width: 60px;
+      height: 100px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 0.5px solid #FFFFFF;
+      opacity: 0.5;
+      backdrop-filter: blur(32.5px);
+      border-radius: 10px;
+      transform: translateX(-50%);
+    }
+
+    .countdown .label {
+      font-size: 24px;
+      color: #FFFFFF;
+      margin-top: 10px;
+    }
+
+    .notification-text {
+      font-size: 16px;
+      color: #FFFFFF;
+      margin-bottom: 20px;
+      z-index: 999;
+    }
+
+    .email-form {
+      display: flex;
+      align-items: center;
+      background: #FFFFFF;
+      border-radius: 10px;
+      overflow: hidden;
+      width: 80%;
+      max-width: 600px;
+      z-index: 999;
+    }
+
+    .email-form input[type="email"] {
+      padding: 20px;
+      border: none;
+      outline: none;
+      font-size: 20px;
+      width: 70%;
+      color: rgba(0, 0, 0, 0.6);
+    }
+
+    .email-form button {
+      padding: 20px;
+      background: #FAA21A;
+      border: none;
+      color: #FFFFFF;
+      font-size: 20px;
+      cursor: pointer;
+      width: 30%;
+    }
+
+    .email-form button:hover {
+      background: #e68a00;
+    }
+    .social-icons {
+      position: absolute;
+      bottom: -73px;
+      right: -226px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 999;
+    }
+
+    .social-icons a {
+      color: #FFFFFF;
+      text-decoration: none;
+      font-size: 20px;
+    }
+
+    .ellipse {
+      filter: blur(200px);
+      border-radius: 377px;
+      position: absolute;
+      width: 761.1px;
+      height: 761.1px;
+    }
+
+    .ellipse-3 { background: #FAA21A; top: -543px; right: -255.1px; }
+    .ellipse-4 { background: #13213C; left: -308px; top: -536px; }
+    .ellipse-5 { background: #DF40A9; right: -255.1px; bottom: -583.1px; }
+    .ellipse-6 { background: #13213C; left: -308px; bottom: -590.1px; }
+  </style>
+</head>
+<body>
+  <div class="website-count-down">
+    <div class="logo">
+      <img src="./logo.svg" alt="Logo" style="width: 250px;">
+    </div>
+    <div class="ellipse ellipse-3"></div>
+    <div class="ellipse ellipse-4"></div>
+    <div class="ellipse ellipse-5"></div>
+    <div class="ellipse ellipse-6"></div>
+    <div class="launching-soon">Launching In</div>
+    <div class="countdown" id="countdown">
+      <div class="time-pair">
+        <div class="digit">
+          <div class="time-block">
+            <div class="rectangle"></div>
+            <span id="days-1">2</span>
+          </div>
+          <div class="time-block">
+            <div class="rectangle"></div>
+            <span id="days-2">0</span>
+          </div>
+        </div>
+        <div class="label">DAYS</div>
+      </div>
+      <div class="time-pair">
+        <div class="digit">
+          <div class="time-block">
+            <div class="rectangle"></div>
+            <span id="hours-1">2</span>
+          </div>
+          <div class="time-block">
+            <div class="rectangle"></div>
+            <span id="hours-2">2</span>
+          </div>
+        </div>
+        <div class="label">HOURS</div>
+      </div>
+      <div class="time-pair">
+        <div class="digit">
+          <div class="time-block">
+            <div class="rectangle"></div>
+            <span id="minutes-1">5</span>
+          </div>
+          <div class="time-block">
+            <div class="rectangle"></div>
+            <span id="minutes-2">6</span>
+          </div>
+        </div>
+        <div class="label">MINUTES</div>
+      </div>
+      <div class="time-pair">
+        <div class="digit">
+          <div class="time-block">
+            <div class="rectangle"></div>
+            <span id="seconds-1">0</span>
+          </div>
+          <div class="time-block">
+            <div class="rectangle"></div>
+            <span id="seconds-2">6</span>
+          </div>
+        </div>
+        <div class="label">SECONDS</div>
+      </div>
+    </div>
+    <div class="notification-text">We'll let you know when we are Launching</div>
+    <div class="email-form">
+      <input type="email" placeholder="Email Address" required>
+      <button>Notify Me</button>
+    </div>
+    <div class="social-icons">
+      <a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook-f"></i></a>
+      <a href="https://x.com/Dlandlordgroup?t=L-8KWmx8H1seytKA18v-aw&s=31" target="_blank"><i class="fa fa-twitter"></i></a>
+      <a href="https://www.linkedin.com/company/digitallandlordsgroup/" target="_blank"><i class="fa fa-linkedin"></i></a>
+      <a href="https://www.instagram.com/digitallandlordsgroup/" target="_blank"><i class="fa fa-instagram"></i></a>
+    </div>
+  </div>
+
+  <script>
+    function countdownTimer() {
+      const year = new Date().getFullYear();
+      const countDownDate = new Date(`July 31, ${year} 00:00:00`).getTime();
+      const countdownElement = document.getElementById('countdown');
+
+      const daysSpan1 = countdownElement.querySelector('#days-1');
+      const daysSpan2 = countdownElement.querySelector('#days-2');
+      const hoursSpan1 = countdownElement.querySelector('#hours-1');
+      const hoursSpan2 = countdownElement.querySelector('#hours-2');
+      const minutesSpan1 = countdownElement.querySelector('#minutes-1');
+      const minutesSpan2 = countdownElement.querySelector('#minutes-2');
+      const secondsSpan1 = countdownElement.querySelector('#seconds-1');
+      const secondsSpan2 = countdownElement.querySelector('#seconds-2');
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = countDownDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        daysSpan1.textContent = Math.floor(days / 10);
+        daysSpan2.textContent = days % 10;
+        hoursSpan1.textContent = Math.floor(hours / 10);
+        hoursSpan2.textContent = hours % 10;
+        minutesSpan1.textContent = Math.floor(minutes / 10);
+        minutesSpan2.textContent = minutes % 10;
+        secondsSpan1.textContent = Math.floor(seconds / 10);
+        secondsSpan2.textContent = seconds % 10;
+
+        if (distance < 0) {
+          clearInterval(countdownInterval);
+          countdownElement.innerHTML = "EXPIRED";
+        }
+      }
+
+      updateCountdown();
+      const countdownInterval = setInterval(updateCountdown, 1000);
+    }
+
+    countdownTimer();
+  </script>
+</body>
+</html>
