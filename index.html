@@ -7,7 +7,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Digital+Numbers:wght@400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Digital7&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <style>
@@ -57,8 +56,9 @@
 
     .countdown .digit {
       display: flex;
-      gap: 10px; /* Adjust gap between the two digits */
+      gap: 10px;
     }
+
     .logo {
       position: absolute;
       top: -107px;
@@ -74,6 +74,7 @@
       margin-right: 10px;
       z-index: 9999;
     }
+
     .countdown .time-block {
       position: relative;
       text-align: center;
@@ -146,6 +147,7 @@
     .email-form button:hover {
       background: #e68a00;
     }
+
     .social-icons {
       position: absolute;
       bottom: -73px;
@@ -174,6 +176,125 @@
     .ellipse-4 { background: #13213C; left: -308px; top: -536px; }
     .ellipse-5 { background: #DF40A9; right: -255.1px; bottom: -583.1px; }
     .ellipse-6 { background: #13213C; left: -308px; bottom: -590.1px; }
+
+    @media (max-width: 768px) {
+      .website-count-down {
+        padding: 20px;
+      }
+      .launching-soon {
+        font-size: 24px;
+      }
+      .countdown .time-block span {
+        font-size: 48px;
+      }
+      .countdown .time-block .rectangle {
+        top: 58px;
+        width: 40px;
+        height: 60px;
+      }
+      .countdown .label {
+        font-size: 18px;
+      }
+      .email-form input[type="email"] {
+        font-size: 16px;
+      }
+      .email-form button {
+        font-size: 16px;
+      }
+      .social-icons {
+        bottom: 20px;
+        right: 20px;
+      }
+      .logo {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin-bottom: 20px;
+        font-size: 18px;
+        height: auto;
+        width: auto;
+      }
+      .logo img {
+        height: 150px;
+        margin-right: 0;
+      }
+      .ellipse {
+        width: 380.55px;
+        height: 380.55px;
+      }
+      .ellipse-3 {
+        top: -271.5px;
+        right: -127.55px;
+      }
+      .ellipse-4 {
+        left: -154px;
+        top: -268px;
+      }
+      .ellipse-5 {
+        right: -127.55px;
+        bottom: -291.55px;
+      }
+      .ellipse-6 {
+        left: -154px;
+        bottom: -295.05px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .launching-soon {
+        font-size: 20px;
+      }
+      .countdown {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .countdown .time-pair {
+        margin-bottom: 10px;
+      }
+      .countdown .time-block span {
+        font-size: 36px;
+      }
+      .countdown .time-block .rectangle {
+        top: 44px;
+        width: 30px;
+        height: 40px;
+      }
+      .countdown .label {
+        font-size: 14px;
+      }
+      .email-form {
+        flex-direction: column;
+      }
+      .email-form input[type="email"],
+      .email-form button {
+        font-size: 14px;
+        padding: 10px;
+      }
+      .email-form input[type="email"] {
+        width: 100%;
+      }
+      .email-form button {
+        width: 100%;
+      }
+      .logo {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin-bottom: 20px;
+        font-size: 18px;
+        height: auto;
+        width: auto;
+      }
+      .logo img {
+        height: 150px;
+        margin-right: 0;
+      }
+      .social-icons {
+        bottom: 10px;
+        right: 10px;
+        font-size: 16px;
+      }
+    }
   </style>
 </head>
 <body>
