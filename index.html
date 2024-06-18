@@ -174,6 +174,26 @@
     .ellipse-5 { background: #DF40A9; right: -255.1px; bottom: -583.1px; }
     .ellipse-6 { background: #13213C; left: -308px; bottom: -590.1px; }
 
+    .notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #28a745;
+      color: white;
+      padding: 15px;
+      border-radius: 5px;
+      z-index: 1000;
+      display: none;
+    }
+
+    .notification.hidden {
+      display: none;
+    }
+
+    .notification.visible {
+      display: block;
+    }
+
     @media (max-width: 768px) {
       .website-count-down {
         padding: 20px;
@@ -415,8 +435,8 @@
     </div>
     <div class="notification-text">We'll let you know when we are Launching</div>
     <div class="email-form">
-      <input type="email" placeholder="Email Address" required>
-      <button>Notify Me</button>
+      <input type="email" id="email" placeholder="Email Address" required>
+      <button type="button" onclick="addToWaitlist()">Notify Me</button>
     </div>
     <div class="social-icons">
       <a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook-f"></i></a>
@@ -425,6 +445,8 @@
       <a href="https://www.instagram.com/digitallandlordsgroup/" target="_blank"><i class="fa fa-instagram"></i></a>
     </div>
   </div>
+
+  <div id="notification" class="notification hidden"></div>
 
   <script>
     function countdownTimer() {
@@ -470,6 +492,43 @@
     }
 
     countdownTimer();
+
+    function showNotification(message, isError = false) {
+      const notification = document.getElementById('notification');
+      notification.textContent = message;
+      notification.style.backgroundColor = isError ? '#dc3545' : '#28a745';
+      notification.classList.remove('hidden');
+      notification.classList.add('visible');
+
+      setTimeout(() => {
+        notification.classList.remove('visible');
+        notification.classList.add('hidden');
+      }, 3000);
+    }
+
+    function addToWaitlist() {
+      const email = document.getElementById('email').value;
+      const payload = {
+        email: email
+      };
+
+      fetch('https://staging.api.digitallandlordsgroup.com/v1/waiting-list', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data) {
+          showNotification('You have been added to the waitlist!');
+        } 
+      })
+      .catch(error => {
+        showNotification('Error: Unable to add to the waitlist.', true);
+      });
+    }
   </script>
 </body>
 </html>
